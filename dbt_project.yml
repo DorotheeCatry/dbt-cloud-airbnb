@@ -27,9 +27,6 @@ clean-targets:
 # Configuration des modèles
 models:
   analyse_airbnb:
-    # Configuration pour les modèles dans le dossier exemple
-    example:
-      +materialized: view
 
     # Configuration pour nos futurs modèles
     curation:

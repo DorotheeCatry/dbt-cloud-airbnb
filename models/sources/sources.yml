@@ -5,6 +5,9 @@ sources:
     description: "Données brutes Airbnb chargées depuis le repository Git"
     database: airbnb
     schema: raw
+    config:
+      freshness:
+        warn_after: {count: 24, period: hour}
     tables:
       - name: hosts
         description: "Informations sur les hôtes Airbnb"
