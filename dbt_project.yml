@@ -3,7 +3,7 @@ name: 'analyse_airbnb'
 version: '1.0.0'
 config-version: 2
 dbt-cloud:
-    project-id: 70471823551330
+  project-id: 70471823551330
 
 # Profil utilisé (correspond au nom dans profiles.yml)
 profile: 'analyse_airbnb'
