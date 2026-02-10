@@ -1,0 +1,79 @@
+version: 2
+
+sources:
+  - name: raw_airbnb_data
+    description: "Données brutes Airbnb chargées depuis le repository Git"
+    database: airbnb
+    schema: raw
+    tables:
+      - name: hosts
+        description: "Informations sur les hôtes Airbnb"
+        columns:
+          - name: host_id
+            description: "Identifiant unique de l'hôte"
+            tests:
+              - unique
+              - not_null
+          - name: host_name
+            description: "Nom d'affichage de l'hôte"
+          - name: host_since
+            description: "Date d'inscription de l'hôte sur Airbnb"
+          - name: host_location
+            description: "Localisation de l'hôte (ville, pays)"
+          - name: host_response_time
+            description: "Temps de réponse moyen de l'hôte"
+          - name: host_response_rate
+            description: "Taux de réponse de l'hôte (en %)"
+          - name: host_is_superhost
+            description: "Indicateur superhost (t/f)"
+          - name: host_neighbourhood
+            description: "Quartier de l'hôte"
+          - name: host_identity_verified
+            description: "Identité vérifiée (t/f)"
+
+      - name: listings
+        description: "Informations sur les logements Airbnb"
+        columns:
+          - name: id
+            description: "Identifiant unique du listing"
+            tests:
+              - unique
+              - not_null
+          - name: listing_url
+            description: "URL du listing sur Airbnb"
+          - name: name
+            description: "Nom du listing"
+          - name: description
+            description: "Description du listing"
+          - name: host_id
+            description: "Identifiant de l'hôte propriétaire"
+            tests:
+              - not_null
+              - relationships:
+                  to: source('raw_airbnb_data', 'hosts')
+                  field: host_id
+          - name: property_type
+            description: "Type de propriété"
+          - name: room_type
+            description: "Type de chambre/espace"
+          - name: accommodates
+            description: "Nombre de personnes accueillies"
+          - name: price
+            description: "Prix par nuit (avec devise)"
+          - name: minimum_nights
+            description: "Nombre minimum de nuits"
+
+      - name: reviews
+        description: "Dates des commentaires par listing"
+        columns:
+          - name: listing_id
+            description: "Identifiant du listing commenté"
+            tests:
+              - not_null
+              - relationships:
+                  to: source('raw_airbnb_data', 'listings')
+                  field: id
+          - name: date
+            description: "Date du commentaire"
+            tests:
+              - not_null

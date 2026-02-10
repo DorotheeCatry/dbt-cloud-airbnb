@@ -23,6 +23,6 @@ WITH listings_raw AS
         try_cast(split_part(price, '$', 1) as float) as price,
 		minimum_nights,
 		maximum_nights
-	FROM airbnb.raw.listings )
+	FROM FROM {{ source('raw_airbnb_data', 'listings') }} )
 SELECT *
 FROM listings_raw
