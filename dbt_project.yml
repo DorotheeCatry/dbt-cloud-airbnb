@@ -43,9 +43,14 @@ models:
 # Configuration des seeds
 seeds:
   analyse_airbnb:
-    +enabled: true
-    +schema: raw
-
+    tourists_per_year:
+      +enabled: true
+      +database: airbnb
+      +schema: raw
+      +column_types:
+        year: integer
+        tourists: integer
+        
 # Variables du projet
 vars:
   # Variables pour les modèles incrémentaux (Chapitre 7)
