@@ -1,0 +1,49 @@
+# Nom du projet
+name: 'analyse_airbnb'
+version: '1.0.0'
+config-version: 2
+
+# Profil utilisé (correspond au nom dans profiles.yml)
+profile: 'analyse_airbnb'
+
+# Dossiers du projet
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+# Dossier de destination des fichiers compilés
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+# Configuration des modèles
+models:
+  analyse_airbnb:
+    # Configuration pour les modèles dans le dossier exemple
+    example:
+      +materialized: view
+
+    # Configuration pour nos futurs modèles
+    curation:
+      +materialized: view
+      +schema: curation
+
+    analytics:
+      +materialized: table
+      +schema: analytics
+
+# Configuration des seeds
+seeds:
+  analyse_airbnb:
+    +enabled: true
+    +schema: raw
+
+# Variables du projet
+vars:
+  # Variables pour les modèles incrémentaux (Chapitre 7)
+  inc_database: 'airbnb'
+  inc_schema: 'incremental'
