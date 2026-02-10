@@ -9,15 +9,17 @@ dbt-cloud:
 profile: 'analyse_airbnb'
 
 # Dossiers du projet
-model-paths: ["models"]
+
 analysis-paths: ["analyses"]
-test-paths: ["tests"]
-seed-paths: ["seeds"]
 macro-paths: ["macros"]
+model-paths: ["models"]
+seed-paths: ["seeds"]
 snapshot-paths: ["snapshots"]
+target-path: "target"
+test-paths: ["tests"]
 
 # Dossier de destination des fichiers compilés
-target-path: "target"
+
 clean-targets:
   - "target"
   - "dbt_packages"
