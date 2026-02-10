@@ -33,4 +33,4 @@ WITH hosts_raw AS (
     FROM airbnb.raw.hosts
 )
 
-SELECT * FROM hosts_raw;
+SELECT * FROM hosts_raw
