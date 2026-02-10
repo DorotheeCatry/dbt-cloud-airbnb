@@ -1,6 +1,6 @@
 {{
     config(
-        materialized='view',
+        materialized='table',
         schema='analytics',
         tags=['analytics', 'dashboard', 'performance']
     )
