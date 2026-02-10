@@ -30,6 +30,6 @@ WITH hosts_raw AS (
         -- Conversion en booléen pour identité vérifiée
         host_identity_verified = 't' AS is_identity_verified
 
-    FROM airbnb.raw.hosts )
+    FROM {{ source('raw_airbnb_data', 'hosts') }} )
     SELECT * 
     FROM hosts_raw
